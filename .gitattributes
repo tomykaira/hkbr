@@ -1,0 +1,2 @@
+# wrangler types の生成物。行末空白を含むため空白チェックの対象外にする
+worker/worker-configuration.d.ts -whitespace linguist-generated
