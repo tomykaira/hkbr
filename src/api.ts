@@ -24,8 +24,12 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
   });
   const data = await res.json().catch(() => null);
   if (!res.ok) throw new ApiError(data?.error ?? `エラーが発生しました (${res.status})`, res.status);
+  // 更新系のリクエストはセッションを作成・切り替えることがある
+  if (method !== "GET") window.dispatchEvent(new Event(SESSION_CHANGE_EVENT));
   return data as T;
 }
+
+export const SESSION_CHANGE_EVENT = "hkbr:session-change";
 
 export const api = {
   me: () => request<MeResponse>("GET", "/me"),
