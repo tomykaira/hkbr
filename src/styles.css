@@ -8,6 +8,8 @@
   --accent-text: #ffffff;
   --accent-soft: #fbece7;
   --danger: #c0362c;
+  --info: #2f6fb3;
+  --info-soft: #e8f1fb;
   --radius: 10px;
   color-scheme: light;
 }
@@ -23,6 +25,8 @@
     --accent-text: #17181a;
     --accent-soft: #3a2721;
     --danger: #f07167;
+    --info: #6aa8e8;
+    --info-soft: #1d2a38;
     color-scheme: dark;
   }
 }
@@ -95,8 +99,8 @@ h2 {
   min-width: 0;
 }
 .card.highlight {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+  border-color: var(--info);
+  background: var(--info-soft);
 }
 
 .grid-2 {
