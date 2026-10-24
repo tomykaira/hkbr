@@ -237,6 +237,7 @@ app.get("/projects/:id", async (c) => {
     .all<{ user_id: string; nickname: string; topic: string; assigned_topic: string | null }>();
   const mine = entries.find((e) => e.user_id === userId);
   const status = statusOf(project, entries.length);
+  const isOwner = project.owner_id === userId;
 
   return c.json<ProjectView>({
     id: project.id,
@@ -245,8 +246,8 @@ app.get("/projects/:id", async (c) => {
     topicDeadline: project.topic_deadline,
     workDeadline: project.work_deadline,
     status,
-    isOwner: project.owner_id === userId,
-    participants: entries.map((e) => e.nickname),
+    isOwner,
+    participants: isOwner ? entries.map((e) => e.nickname) : null,
     myEntry: mine ? { nickname: mine.nickname, topic: mine.topic } : null,
     myAssignment: status === "assigned" && mine?.assigned_topic ? { topic: mine.assigned_topic } : null,
     now,

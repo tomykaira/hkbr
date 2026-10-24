@@ -39,7 +39,8 @@ export interface ProjectView {
   workDeadline: number | null;
   status: ProjectStatus;
   isOwner: boolean;
-  participants: string[];
+  /** 参加者のニックネーム一覧。主催者以外には null */
+  participants: string[] | null;
   myEntry: EntryInput | null;
   myAssignment: { topic: string } | null;
   now: number;

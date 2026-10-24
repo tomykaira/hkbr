@@ -93,18 +93,21 @@ export function ProjectPage({ id }: { id: string }) {
 
       {open ? <EntrySection project={project} onChange={reload} /> : <AssignmentSection project={project} />}
 
-      <section className="card">
-        <h2>参加者（{project.participants.length}人）</h2>
-        {project.participants.length === 0 ? (
-          <p className="muted">まだ参加者はいません。</p>
-        ) : (
-          <ul className="chips">
-            {project.participants.map((name, i) => (
-              <li key={i}>{name}</li>
-            ))}
-          </ul>
-        )}
-      </section>
+      {project.participants && (
+        <section className="card">
+          <h2>参加者（{project.participants.length}人）</h2>
+          <p className="muted small">参加者一覧は主催者にのみ表示されています。</p>
+          {project.participants.length === 0 ? (
+            <p className="muted">まだ参加者はいません。</p>
+          ) : (
+            <ul className="chips">
+              {project.participants.map((name, i) => (
+                <li key={i}>{name}</li>
+              ))}
+            </ul>
+          )}
+        </section>
+      )}
 
       {project.isOwner && project.status === "assigned" && <AllAssignments id={project.id} />}
     </>
