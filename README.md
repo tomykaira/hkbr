@@ -53,3 +53,7 @@ npm run typecheck
 
 Workers Free（1日10万リクエスト）、D1 Free（1日500万行読み取り・10万行書き込み、5GB）、Workers Builds Free の範囲で動作します。
 割当はアクセス時に遅延実行するため Cron Trigger は使っていません。
+
+## ライセンス
+
+[MIT](LICENSE)
